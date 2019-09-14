@@ -30,7 +30,7 @@ void* work(void* v) {
     for (int i = 0; i < 25; i++) {
         printf("%s", params->id);
         fflush(stdout);
-        delay_in_msec(1000);
+        delay_in_msec(100000);
     }
     pthread_mutex_unlock(params->pLock);
 
@@ -48,10 +48,10 @@ int main(void) {
     pthread_mutex_init(&lock3, 0);
     pthread_mutex_init(&lock4, 0);
 
-    pthread_create(&t1, 0, work, (void*) &(PARAMS){"1", &lock1});
-    pthread_create(&t2, 0, work, (void*) &(PARAMS){"2", &lock1});
-    pthread_create(&t3, 0, work, (void*) &(PARAMS){"3", &lock2});
-    pthread_create(&t4, 0, work, (void*) &(PARAMS){"4", &lock2});
+    pthread_create(&t1, 0, work, (void*) &(PARAMS){"1", &lock3});
+    pthread_create(&t2, 0, work, (void*) &(PARAMS){"2", &lock3});
+    pthread_create(&t3, 0, work, (void*) &(PARAMS){"3", &lock3});
+    pthread_create(&t4, 0, work, (void*) &(PARAMS){"4", &lock3});
 
     pthread_join(t1, 0);
     pthread_join(t2, 0);

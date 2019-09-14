@@ -21,7 +21,7 @@ void* work(void* v) {
         const char* message = (const char*) v;
         printf("%s", message);
         fflush(stdout);
-        delay_in_msec(1000);
+        delay_in_msec(100000);
     }
     return 0;
 }
